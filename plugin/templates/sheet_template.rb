@@ -14,20 +14,12 @@ module AresMUSH
 			Chargen.approval_status(@char)
 		end
 
-		def powers
-			@char.powers
-		end
-
-		def skills
-			@char.skills
-		end
-
 		def advantages
 			@char.advantages
 		end
 
-		def flaws
-			@char.flaws
+		def personality
+			@char.personality
 		end
 
 		def section_line(title)

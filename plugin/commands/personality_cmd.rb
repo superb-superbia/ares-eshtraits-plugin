@@ -1,9 +1,9 @@
 module AresMUSH
     module ESHTraits
-        class SkillsCmd
+        class PersonalityCmd
             include CommandHandler
 
-            attr_accessor :name, :skills 
+            attr_accessor :name, :personality 
 
             def parse_args
                 self.name = cmd.args || enactor_name
@@ -11,7 +11,7 @@ module AresMUSH
 
             def handle 
                 ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-                    template = BorderedDisplayTemplate.new model.skills, "#{model.name}'s Skills"
+                    template = BorderedDisplayTemplate.new model.personality, "#{model.name}'s Personality"
                     client.emit template.render
                 end
             end

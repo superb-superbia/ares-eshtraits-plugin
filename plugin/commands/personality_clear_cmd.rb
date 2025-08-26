@@ -1,9 +1,9 @@
 module AresMUSH
     module ESHTraits
-        class ClearSkillsCmd
+        class ClearPersonalityCmd
             include CommandHandler
 
-            attr_accessor :name, :skills
+            attr_accessor :name, :personality
 
             def parse_args
                 self.name = cmd.args || enactor_name
@@ -16,11 +16,11 @@ module AresMUSH
             def handle 
                 ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
                     if (enactor.name == model.name && !Chargen.check_chargen_locked(enactor))
-                        model.update(skills: nil)
-                        client.emit_success t('eshtraits.skills_cleared')
+                        model.update(personality: nil)
+                        client.emit_success t('eshtraits.personality_cleared')
                     elsif (Chargen.can_approve?(enactor))
-                        model.update(skills: nil)
-                        client.emit_success t('eshtraits.skills_cleared')
+                        model.update(personality: nil)
+                        client.emit_success t('eshtraits.personality_cleared')
                     else
                         client.emit_failure t('dispatcher.not_allowed')
                     end

@@ -13,24 +13,6 @@ module AresMUSH
 
         def self.get_cmd_handler(client, cmd, enactor)
             case cmd.root
-            when "powers"
-                case cmd.switch
-                when "set"
-                    return SetPowersCmd
-                when "clear"
-                    return ClearPowersCmd
-                else 
-                    return PowersCmd
-                end
-            when "skills"
-                case cmd.switch
-                when "set"
-                    return SetSkillsCmd
-                when "clear"
-                    return ClearSkillsCmd
-                else 
-                    return SkillsCmd
-                end
             when "advantages"
                 case cmd.switch
                 when "set"
@@ -40,14 +22,14 @@ module AresMUSH
                 else
                     return AdvantagesCmd
                 end
-            when "flaws"
+            when "personality"
                 case cmd.switch
                 when "set"
-                    return SetFlawsCmd
+                    return SetPersonalityCmd
                 when "clear"
-                    return ClearFlawsCmd
+                    return ClearPersonalityCmd
                 else 
-                    return FlawsCmd
+                    return PersonalityCmd
                 end
             when "sheet"
                 return SheetCmd
